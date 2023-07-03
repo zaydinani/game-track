@@ -1,0 +1,15 @@
+@import '_variables';
+
+
+* html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arimo', sans-serif;
+  background-color: $main-dark;
+  color: white;
+}

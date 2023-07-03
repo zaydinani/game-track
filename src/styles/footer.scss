@@ -1,0 +1,120 @@
+
+@import '_variables.scss';
+
+footer{
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: auto;
+    max-width: 99vw;
+    padding-top: 40px;
+    background-color: $main-dark;
+    color: #fff;
+    .footer-content{
+        @include flex(center, center);
+        flex-direction: column;
+        text-align: center;
+        h3{
+            font-size: 2.1rem;
+            font-weight: 500;
+            text-transform: capitalize;
+            line-height: 3rem;
+            
+        }
+        p{
+            max-width: 500px;
+            margin: 10px auto;
+            line-height: 28px;
+            font-size: 14px;
+            color: #cacdd2;
+            
+        }
+        .socials{
+            list-style: none;
+            @include flex(center, center);
+            margin: 1rem 0 2rem 0;
+                li{
+                margin: 0 10px;
+            }
+            a{
+                text-decoration: none;
+                color: #fff;
+                border: 1.1px solid white;
+                padding: 5px;
+                border-radius: 50%;
+            }
+            a i{
+                font-size: 1.1rem;
+                width: 20px;
+                transition: color .4s ease; 
+            }
+            a:hover i{
+                color: $accents;
+            }
+        }
+    }
+    
+    .footer-bottom{
+        max-width: 95vw;
+        padding: 20px;
+        padding-bottom: 50px;
+        text-align: center;
+        text-overflow: clip;
+        p{
+            float: left;
+            font-size: 14px;
+            word-spacing: 2px;
+            text-transform: capitalize;
+        }
+        a{
+          color:$secondary;
+          font-size: 16px;
+          text-decoration: none;
+        }
+        span{
+            text-transform: uppercase;
+            opacity: .4;
+            font-weight: 200;
+        }
+        
+    }
+    .footer-menu{
+      float: right;
+    }
+    ul{
+      display: flex;
+      li{
+        padding-right: 10px;
+        display: block;
+        a{
+            color: #cfd2d6;
+            transition: 0.5s;
+            text-decoration: none;
+        }
+        a:hover{
+          color: $accents;
+        }
+      }
+    }
+}
+
+@media (max-width:500px) {
+    .footer-menu ul{
+        display: flex;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+}
+
+@media(max-width: 600px) {
+    .footer-bottom{
+        flex-direction: column;
+        @include flex(center, _);
+        .footer-menu ul{
+            justify-content: center;
+            padding: 0;
+        }
+    }
+}
+    
+    

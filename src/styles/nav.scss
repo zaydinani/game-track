@@ -1,0 +1,134 @@
+@import '_variables';
+
+
+/* navigation styles*/
+header {
+    height: 3rem;
+    width: 100vw;
+    @include flex(space-between, center);
+    padding: 10px;
+    background-color: $secondary;
+    position: fixed;
+    z-index: 100;
+    ul{
+        @include flex(space-evenly, center);
+        width: 15rem;
+        @include reset-list-styles;
+        @include border-bottom-animation-white;
+    }
+    /* navigation styles*/
+    .sign-up{
+        @include flex(space-evenly, center);
+        .sign-in{
+            a{
+                color: white;
+            }
+        }
+    }
+    
+    img{
+        height: 4rem;
+    }
+}
+
+/*!--------------------------hamburger menu--------------------*/
+.hamburger{
+    display: block;
+    margin: 15px;
+    width: 40px;
+    cursor: pointer;
+    appearance: none;
+    background: none;
+    outline: none;
+    border: none;
+    top: 5px;
+    z-index: 100;
+}
+.hamburger .bar, .hamburger::after, .hamburger::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  margin: 6px 0px;
+  transition: 0.4s;
+}
+.hamburger.is-active::before{
+  transform: rotate(-45deg) translate(-2px, 3px);
+}
+.hamburger.is-active .bar {
+  opacity: 0;
+}
+.hamburger.is-active::after{
+  transform: rotate(45deg) translate(-9px, -9px);
+}
+/*!--------------------------mobile nav--------------------*/
+
+.mobile-nav{
+    @include reset-list-styles;
+    position: fixed;
+    top: 0.8rem;
+    left: -90%;
+    min-height: 100vh;
+    width: 40%;
+    z-index: 99;
+    background-color:$secondary;
+    margin-top: 2.5rem;
+    transition: 0.4s;
+    text-align: center;
+    padding: 3rem;
+
+    ul{
+        @include border-bottom-animation-white;
+        height: 50vh;
+        width: 40vw;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        font-family: 'Roboto Slab', serif;
+        li{
+            a{
+                color: white;
+            }
+        }
+    }
+}
+.mobile-nav.is-active{
+    left: 0rem;
+}
+
+/*? media queries*/
+/*?1st one just for hamburger menu*/
+@media screen and (min-width: 800px) {
+    .mobile-nav{
+        display: none;
+    }
+    .hamburger{
+        display: none;
+    }
+    .nav-links{
+        display: none;
+    }
+
+}
+@media screen and (max-width: 800px) {
+    header {
+
+        @include flex(space-between, _);
+    
+        width: 100%;
+        ul{
+            display: none;
+        }
+        .nav-links{
+            display: none;
+        }
+        .sign-in{
+            display: none;
+        }
+        img{
+            margin-left: 0;
+        }
+    }
+}
