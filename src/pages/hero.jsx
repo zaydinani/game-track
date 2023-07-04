@@ -13,9 +13,6 @@ function Hero() {
       <div className="showcase">
         <div className="showcase-top">
           <img src="/logo.png" alt="" />
-          <a href="#" className="btn btn-rounded">
-            Sign In
-          </a>
         </div>
         <div className="showcase-content">
           <h1>welcome</h1>
@@ -28,7 +25,7 @@ function Hero() {
       </div>
 
       <section className="tabs">
-        <div className="container">
+        <div className="containers">
           <div
             id="tab-1"
             className={`tab-item ${activeTab === 'tab-1' ? 'tab-border' : ''}`}
