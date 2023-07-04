@@ -117,10 +117,12 @@ img {
 .tab-content {
 	background: $main-dark;
 	color: #fff;
+	
 	/* Hide initial content */
 	#tab-1-content,
 	#tab-2-content {
 		display: none;
+		margin: 0 auto;
 		opacity: 0;
 	}
 
