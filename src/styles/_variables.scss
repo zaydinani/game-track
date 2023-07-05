@@ -50,6 +50,30 @@ $accents: #BE97C6;
         background: black;
     }
 }
+@mixin buttons {
+    .btn {
+        display: inline-block;
+        background: $secondary;
+        color: #fff;
+        padding: 0.4rem 1.3rem;
+        font-size: 1rem;
+        text-align: center;
+        border: none;
+        cursor: pointer;
+        margin-right: 0.5rem;
+        transition: opacity 0.2s ease-in;
+        outline: none;
+        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.45);
+        transition: 0.5s;
+        border-radius: 2px;
+    }
+    
+    .btn:hover {
+        background-color: $accents;
+        border-radius: 12px;
+        color: black;
+    }
+}
 @mixin border-bottom-animation-shrinks-white {
     li:after {
         content: '';
@@ -80,6 +104,7 @@ $accents: #BE97C6;
         background: white;
     }
 }
+
 @mixin font-serif-titles($font-size, $font-weight) {
     font-family: 'Roboto Slab', serif;
     font-size: $font-size;

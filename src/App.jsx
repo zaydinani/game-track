@@ -7,11 +7,12 @@ import Footer from './components/footer'
 import Hero from './pages/hero'
 import SignUp from './pages/auth/signUp'
 import SignIn from './pages/auth/signIn'
+import Home from './pages/home'
 function App() {
   return (
     <>
       <Nav />
-      <Hero />
+      <Home />
       <Footer />
     </>
   )
