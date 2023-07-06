@@ -22,14 +22,41 @@ function Home() {
         </form>
         <h1>popular</h1>
         <Swiper
-            slidesPerView={4}
-            spaceBetween={30}
+            modules={[Pagination]}
             pagination={{
                 clickable: true,
             }}
-            modules={[Pagination]}
             className="mySwiper"
-            >
+            breakpoints={{
+                0: {
+                    slidesPerView: 2,
+                    spaceBetween: 10,
+                },
+                425: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                768: {
+                    slidesPerView: 3,
+                    spaceBetween: 20,
+                },
+                1024: {
+                    slidesPerView: 4,
+                    spaceBetween: 30,
+                },
+                1440: {
+                    slidesPerView: 5,
+                    spaceBetween: 30,
+                },
+            }}
+        >
+            <SwiperSlide>
+                <GameCard
+                    title="Retro Arcade"
+                    description="Lorem ipsum deserunt repellat enim quos quisquam!"
+                    imageUrl="https://marketplace.canva.com/EAFDxS7TeiQ/1/0/1131w/canva-blue-and-white-illustration-retro-arcade-gaming-event-poster-9Rte-AYY5AQ.jpg"
+                />
+            </SwiperSlide>
             <SwiperSlide>
                 <GameCard
                     title="Retro Arcade"

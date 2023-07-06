@@ -1,7 +1,7 @@
 @import '_variables';
 
 .games-container{
-    padding: 5rem 4rem;
+    padding: 5rem 15%;
     text-align: center;
     .mySwiper{
         height: 22rem;
@@ -11,8 +11,11 @@
     h1{
         font-size: 48px;
         text-transform: capitalize;
+		margin: 3rem 0;
+
     }
     .latest-games{
+		margin: 0 auto;
         div{
             @include flex(center, center);
             flex-wrap: wrap;
@@ -30,6 +33,7 @@ button, input {
 
 .search-bar {
 	display: flex;
+	padding: 0;
 }
 
 .search-bar input,
@@ -58,7 +62,6 @@ button, input {
 }
 .search-bar {
 	margin: auto;
-	padding: 1.5em;
 	justify-content: center;
 	max-width: 30em;
 }
@@ -163,3 +166,18 @@ button, input {
 		background: $secondary;
 	}
 }
+
+    
+@media(max-height: 1440px) {
+	.games-container{
+		padding: 5rem 5%;
+	}
+}
+@media(max-height: 1024px) {
+	.games-container{
+		.mySwiper{
+			height: 20rem;
+		}
+	}
+}
+    

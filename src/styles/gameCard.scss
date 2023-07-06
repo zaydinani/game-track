@@ -47,3 +47,11 @@
     translate: 0;
     opacity: 1;
 }
+
+
+@media(max-height: 1024px) {
+    .game-container{
+        margin: 10px;
+        height: 15rem;
+    }
+}
