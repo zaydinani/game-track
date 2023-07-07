@@ -1,5 +1,5 @@
 import '../styles/collections.scss'
-import GameCard from '../components/gameCard'
+import GameCard from './gameCard'
 
 function playing() {
   

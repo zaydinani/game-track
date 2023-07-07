@@ -1,22 +1,22 @@
 @import '_variables';
 
 
-.container{
+.sign-container{
     width: 80vw;
     margin: 0 auto;
     display: flex;
     padding: 7rem 1rem;
     align-items: center;
-    height: 70vh;
+    height: 100vh;
   
     .logo {
-      width: 50%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      img {
-        width: 25rem;
-      }
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        img {
+            width: 25rem;
+        }
     }
   
     .form-control {
@@ -28,6 +28,10 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        h2{
+            text-transform: capitalize;
+            margin: 1rem 0;
+        }
         form {
             width: 75%;            
         .form {
@@ -47,7 +51,7 @@
                     font-size: inherit;
                     color: white;
                     outline: none;
-                    padding: 0.8rem 0;
+                    padding: 1.2rem 0;
                     background: none;
                 &:hover {
                     border-color: $main-dark;
@@ -113,32 +117,48 @@
     }
 }
   
-  @media screen and (max-width: 1100px) {
-      .container{
-          display: flex;
-          flex-direction: column-reverse;
-          height: fit-content;
-          justify-content: center;
-          .logo{
+@media screen and (max-width: 1100px) {
+    .sign-container{
+        display: flex;
+        flex-direction: column-reverse;
+        height: fit-content;
+        justify-content: center;
+        padding: 5.5rem 0rem 2rem;
+        .logo{
             margin-top: 3rem;
-          }
-          .form-control{
-              width: 80%;
-          }
-      }
+        }
+        .form-control{
+            width: 60%;
+        }
+    }
   
-  }
-  
-  @media screen and (max-width: 500px) {
-      .container{
-          width: 100vw;
-          .form-control{
-              width: 95%;
-          }
-          .logo{
-            img{
-                width: 60vw;
+}
+@media screen and (max-width: 768px) {
+    .sign-container{
+        .logo{
+            a{
+                font-size: 14px;
             }
-          }
-      }
-  }
+        }
+    }
+}
+@media screen and (max-width: 500px) {
+    .sign-container{
+        width: 100vw;
+        .form-control{
+            width: 80%;
+            form{
+                width: 90%;
+            }
+        }
+        .logo{
+            width: 100%;
+            img{
+                width: 80vw;
+            }
+            a{
+                font-size: 12px;
+            }
+        }
+    }
+}
