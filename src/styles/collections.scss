@@ -1,0 +1,24 @@
+@import '_variables';
+
+.collection-container{
+    padding: 5rem 4rem;
+    @include flex(center, center);
+    flex-direction: column;
+    h1{
+        margin-bottom: 2rem;
+    }
+    .card-container{
+        @include flex(center, center);
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        background-color: #795f913a;
+        border-radius: 15px;
+        padding: 1.5rem;
+        width: 100%;
+    }
+}
+@media(max-width: 358px) {
+    .collection-container{
+        padding: 5rem 2rem;
+    }
+}
