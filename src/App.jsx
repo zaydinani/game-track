@@ -16,7 +16,7 @@ function App() {
   return (
     <>
       <Nav />
-      <Hero />
+      <Home />
       <Footer />
     </>
   )
