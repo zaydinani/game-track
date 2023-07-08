@@ -81,7 +81,7 @@ img {
 .tabs {
 	background: $secondary;
 	border-right: none;
-	.containers {
+	.tabs-containers {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
 		grid-gap: 1rem;
@@ -92,11 +92,14 @@ img {
 		div{
 			transition: 0.5s ease-in-out;
 			padding: 1.5rem 0;
-			height: 6rem;
+			height: 9rem;
 		}
 		div:hover {
 			color:#fff;
 			cursor: pointer;
+		}
+		.tab-border {
+			color: #fff;
 		}
 	}
 	
@@ -117,7 +120,7 @@ img {
 .tab-content {
 	background: $main-dark;
 	color: #fff;
-	
+	margin: 4rem 0;
 	/* Hide initial content */
 	#tab-1-content,
 	#tab-2-content {
@@ -166,7 +169,7 @@ img {
 
 
 /* Container */
-.container {
+.container-info {
 	max-width: 70%;
 	margin: auto;
 	overflow: hidden;
@@ -251,7 +254,7 @@ img {
     
 @media (max-width: 960px) {
     .showcase {
-        height: 70vh;
+        height: 100vh;
     }
 
     .showcase-top img {
@@ -291,22 +294,17 @@ img {
     }
 }
     
-@media (max-width: 700px) {
+@media (max-width: 768px) {
 
     .showcase::after {
-        background: rgba(0, 0, 0, 0.6);
+        background: rgba(0, 0, 0, 0.3);
         box-shadow: inset 80px 80px 150px #000000, inset -80px -80px 150px #000000;
     }
-    .showcase-content{
-		h1{
-			font-size: 2.5rem;
-			line-height: 1;
 
-		}
-		p {
-			font-size: 1rem;
-		}
-    }
+	.showcase {
+		height: 100vh;
+	}
+	
     #tab-1-content .tab-1-content-inner {
         grid-template-columns: 1fr;
         text-align: center;
@@ -337,4 +335,32 @@ img {
         margin-top: 3rem;
     }
 }
+@media(max-width: 425px) {
+	.showcase {
+		height: 100vh;
+		padding-top: 4rem;
+		position: relative;
+		.showcase-top{
+			display: none;
+		}
+		.showcase-content {
+			width: 100%;
+			height: 80vh;
+		}
+	}
+
+}
+@media(max-width: 320px) {
+	.showcase {
+		.showcase-content {
+			h1 {
+				font-size: 4rem;
+			}
+			p {
+				font-size: 1.3rem;
+			}
+		}
+	}
+}
+    
     

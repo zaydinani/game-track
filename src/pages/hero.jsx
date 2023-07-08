@@ -25,7 +25,7 @@ function Hero() {
       </div>
 
       <section className="tabs">
-        <div className="containers">
+        <div className="tabs-containers">
           <div
             id="tab-1"
             className={`tab-item ${activeTab === 'tab-1' ? 'tab-border' : ''}`}
@@ -46,7 +46,7 @@ function Hero() {
       </section>
 
       <section className="tab-content">
-        <div className="container">
+        <div className="container-info">
           <div
             id="tab-1-content"
             className={`tab-content-item ${activeTab === 'tab-1' ? 'show' : ''}`}
