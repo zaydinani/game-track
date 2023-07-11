@@ -3,10 +3,14 @@
 .games-container{
     padding: 5rem 15%;
     text-align: center;
+	
     .mySwiper{
-        height: 22rem;
         background-color: #795f913a;
         border-radius: 15px;
+		.SwiperSlide{
+			height: fit-content;
+			width: fit-content;
+		}
     }
     h1{
         font-size: 48px;
@@ -16,7 +20,7 @@
     }
     .latest-games{
 		margin: 0 auto;
-        div{
+        .game{
             @include flex(center, center);
             flex-wrap: wrap;
         }
