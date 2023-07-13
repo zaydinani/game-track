@@ -5,9 +5,10 @@
     border-radius: 10px;
     overflow: hidden;
     margin: 20px;
-
+    border: 1px solid red;
     .text-container{
         position: absolute;
+        border: 1px solid green;
         height: 100%;
         width: 100%;
         @include flex(center, center);
