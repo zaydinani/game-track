@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import '../styles/home.scss';
 import { useGameData } from '../api/api';
 import GameCard from '../components/gameCard';
+import carouselGameCard from '../components/carouselGameCard';
 
 // Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';

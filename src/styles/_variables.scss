@@ -4,6 +4,23 @@ $main-light: #FBFEF9;
 $secondary: #8A2BE2;
 $accents: #BE97C6;
 
+/*game cards*/
+$ratio: 7/10;
+$border-radius: 0.5rem;
+// Debugging - leave at 1 for intended animation
+$animation-mult: 1;
+$card-anim-func: ease;
+// How fast the card expands
+$speed-in: 300ms * $animation-mult;
+// How fast the card collapses
+$speed-out: 250ms * $animation-mult;
+// Gap below cover for title
+$bottom-gap: 1.75rem;
+// Unfortunately, this has to be manually adjusted for the front
+// layer to clear any content. You can also use percentages.
+$content-height: 6rem;
+$content-gutter: 0.5rem;
+
 /*FUNCTIONS*/ 
 @mixin reset-list-styles {
     li {
