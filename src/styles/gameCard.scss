@@ -11,19 +11,19 @@
     margin: 0 auto;
   }
   
-  .game-card {
-      position: relative;
-      z-index: 0;
-      display: flex;
-      flex-flow: column nowrap;
-    width: 200px;
-      &::before {
+    .game-card {
+        position: relative;
+        z-index: 0;
+        display: flex;
+        flex-flow: column nowrap;
+        width: 200px;
+        &::before {
           content: "";
           aspect-ratio: $ratio;
           width: 100%;
           margin-bottom: $bottom-gap;
-      }
-  }
+        }
+    }
   
   .game-card__front {
       position: absolute;
@@ -235,5 +235,15 @@
           transform: scale(1);
           transition-duration: $speed-in;
           transition-delay: $speed-in / 6;
-      }
-  }
+    }
+}
+@media(max-width: 768px) {
+    .game-card {
+        width: 150px;
+    }
+}
+@media(max-width: 320px) {
+    .game-card {
+        width: 132px;
+    }
+}

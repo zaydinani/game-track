@@ -12,7 +12,7 @@ function carouselGameCard(props) {
             <h1>{title}</h1>
           </a>
           <p>{publisher}</p>
-          <i class="fa-regular fa-star"> {rating}</i>        
+          <i className="fa-regular fa-star"> metacritic: {rating}</i>        
         </div>
       </div>
 

@@ -11,23 +11,23 @@ function GameCard(props) {
       </div>
     */ 
     return (
-      <div class="game-card">
-        <div class="game-card__front">
-          <div class="game-card__header">
-            <div class="game-card__cover">
+      <div className="game-card">
+        <div className="game-card__front">
+          <div className="game-card__header">
+            <div className="game-card__cover">
               <img src={imageUrl}/>
             </div>
-            <div class="game-card__title">{title}</div>
-            <button class="game-card__touch-target" aria-label="Expand"></button>
+            <div className="game-card__title">{title}</div>
+            <button className="game-card__touch-target" aria-label="Expand"></button>
           </div>
         </div>
-        <div class="game-card__back">
-          <div class="game-card__content">
-            <div class="game-card__metadata">
-            <i class="fa-regular fa-star"> {rating}</i>        
+        <div className="game-card__back">
+          <div className="game-card__content">
+            <div className="game-card__metadata">
+            <i className="fa-regular fa-star"> {rating}</i>        
             </div>
-            <div class="game-card__buttons">
-              <button class="game-card__button -update">
+            <div className="game-card__buttons">
+              <button className="game-card__button -update">
                 check it
               </button>
             </div>

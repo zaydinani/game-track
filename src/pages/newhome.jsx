@@ -1,4 +1,7 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
+
+import { useGameData } from '../api/api';
+
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Pagination } from 'swiper/modules';
@@ -13,13 +16,22 @@ import CarouselGameCard from '../components/carouselGameCard';
 import GameCard from '../components/gameCard';
 
 function NewHome() {
+  const { popularGames, latestGames, comingSoonGames, topRatedGames } = useGameData();
+
+  useEffect(() => {
+    //console.log('Popular Games:', popularGames);
+    //console.log('Latest Games:', latestGames);
+    //console.log('top rated Games:', topRatedGames);
+    //console.log('coming soon games:', comingSoonGames);
+
+  }, [popularGames, latestGames, comingSoonGames, topRatedGames]);
   return (
     <div className='games--container'>
-        <form class="search-container">
+        <form className="search-container">
           <input type="text" id="search-bar" placeholder="search games ?"/>
-          <a href="#"><img class="search-icon" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"/></a>
+          <a href="#"><img className="search-icon" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"/></a>
       </form>
-      <h1 className="line-title">trending games</h1>
+      <h1 className="line-title">popular games</h1>
       <Swiper
         slidesPerView={3}
         spaceBetween={15}
@@ -29,110 +41,77 @@ function NewHome() {
         }}
         modules={[FreeMode, Pagination]}
         className="mySwiper"
+        breakpoints={{
+          0: {
+            slidesPerView: 1,
+            spaceBetween: 10,
+          },
+          375: {
+            slidesPerView: 1,
+            spaceBetween: 10,
+          },
+          425: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+          },
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 10,
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 10,
+          },
+          1440: {
+            slidesPerView: 3,
+            spaceBetween: 20,
+          },
+        }}
       >
-        <SwiperSlide>
-          <CarouselGameCard 
-            title={'haha'}
-            imageUrl={'https://ucarecdn.com/75d7700d-c102-40ff-9ba1-f0641444c616/dota2.jpg'}
-            publisher={'woow'}
-            rating={2.5}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CarouselGameCard 
-            title={'haha'}
-            imageUrl={'https://ucarecdn.com/75d7700d-c102-40ff-9ba1-f0641444c616/dota2.jpg'}
-            publisher={'woow'}
-            rating={2.5}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CarouselGameCard 
-            title={'haha'}
-            imageUrl={'https://ucarecdn.com/75d7700d-c102-40ff-9ba1-f0641444c616/dota2.jpg'}
-            publisher={'woow'}
-            rating={2.5}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CarouselGameCard 
-            title={'haha'}
-            imageUrl={'https://ucarecdn.com/75d7700d-c102-40ff-9ba1-f0641444c616/dota2.jpg'}
-            publisher={'woow'}
-            rating={2.5}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CarouselGameCard 
-            title={'haha'}
-            imageUrl={'https://ucarecdn.com/75d7700d-c102-40ff-9ba1-f0641444c616/dota2.jpg'}
-            publisher={'woow'}
-            rating={2.5}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CarouselGameCard 
-            title={'haha'}
-            imageUrl={'https://ucarecdn.com/75d7700d-c102-40ff-9ba1-f0641444c616/dota2.jpg'}
-            publisher={'woow'}
-            rating={2.5}
-          />
-        </SwiperSlide>
+        {popularGames.map((game) => (
+          <SwiperSlide key={game.id}>
+            <CarouselGameCard 
+              title={game.name}
+              imageUrl={game.background_image}
+              publisher={game.publishers}
+              rating={game.metacritic}
+            />
+          </SwiperSlide>
+        ))}
       </Swiper>
-      <h1 className="line-title">trending games</h1>
-
-        <div class="game-cards">
+      <h1 className="line-title">latest games</h1>
+      <div className="game-cards">
+        {latestGames.map((game) => (
           <GameCard 
-            title={'haha'}
-            imageUrl={'https://ucarecdn.com/75d7700d-c102-40ff-9ba1-f0641444c616/dota2.jpg'}
-            rating={2.5}
+            key={game.id}
+            title={game.name}
+            imageUrl={game.background_image}
+            rating={game.metacritic}
           />
+        ))}
+      </div>
+      <h1 className="line-title">anticipated games</h1>
+      <div className="game-cards">
+        {comingSoonGames.map((game) => (
           <GameCard 
-            title={'haha'}
-            imageUrl={'https://ucarecdn.com/75d7700d-c102-40ff-9ba1-f0641444c616/dota2.jpg'}
-            rating={2.5}
+            key={game.id}
+            title={game.name}
+            imageUrl={game.background_image}
+            rating={game.released}
           />
+        ))}
+      </div>
+      <h1 className="line-title">top rated games</h1>
+      <div className="game-cards">
+        {topRatedGames.map((game) => (
           <GameCard 
-            title={'haha'}
-            imageUrl={'https://ucarecdn.com/75d7700d-c102-40ff-9ba1-f0641444c616/dota2.jpg'}
-            rating={2.5}
+            key={game.id}
+            title={game.name}
+            imageUrl={game.background_image}
+            rating={game.metacritic}
           />
-          <GameCard 
-            title={'haha'}
-            imageUrl={'https://ucarecdn.com/75d7700d-c102-40ff-9ba1-f0641444c616/dota2.jpg'}
-            rating={2.5}
-          />
-          <GameCard 
-            title={'haha'}
-            imageUrl={'https://ucarecdn.com/75d7700d-c102-40ff-9ba1-f0641444c616/dota2.jpg'}
-            rating={2.5}
-          />
-          <GameCard 
-            title={'haha'}
-            imageUrl={'https://ucarecdn.com/75d7700d-c102-40ff-9ba1-f0641444c616/dota2.jpg'}
-            rating={2.5}
-          />
-          <GameCard 
-            title={'haha'}
-            imageUrl={'https://ucarecdn.com/75d7700d-c102-40ff-9ba1-f0641444c616/dota2.jpg'}
-            rating={2.5}
-          />
-          <GameCard 
-            title={'haha'}
-            imageUrl={'https://ucarecdn.com/75d7700d-c102-40ff-9ba1-f0641444c616/dota2.jpg'}
-            rating={2.5}
-          />
-          <GameCard 
-            title={'haha'}
-            imageUrl={'https://ucarecdn.com/75d7700d-c102-40ff-9ba1-f0641444c616/dota2.jpg'}
-            rating={2.5}
-          />
-          <GameCard 
-            title={'haha'}
-            imageUrl={'https://ucarecdn.com/75d7700d-c102-40ff-9ba1-f0641444c616/dota2.jpg'}
-            rating={2.5}
-          />
-        </div>
+        ))}
+      </div>
     </div>
   );
 }

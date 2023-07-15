@@ -84,8 +84,8 @@ html {
   }
   .mySwiper{
     border-radius: 8px;
-    height: 66vh;
-    width: 90%;
+    height: fit-content;
+    width: 80%;
     padding: 2rem;
     background-color: #795f913a;
     .swiper-slide {
@@ -99,4 +99,37 @@ html {
 
 
 }
- 
+@media(max-width: 1024px) {
+	.games--container{
+		.mySwiper{
+			width: 90%;
+		}
+	}
+}
+    
+@media(max-width: 425px) {
+	.games--container{
+    .line-title {
+      width: 300px;
+    }
+		.mySwiper{
+			width: 90%;
+		}
+    .search-container{
+      width: 380px;
+    }
+	}
+}
+@media(max-width: 375px) {
+	.games--container{
+    .line-title {
+      font-size: 18px;
+      margin: 0 auto;
+      margin-bottom: 2rem;
+    }
+    .search-container{
+      width: 300px;
+    }
+	}
+}
+    

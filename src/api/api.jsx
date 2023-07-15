@@ -12,8 +12,11 @@ export function useGameData() {
   useEffect(() => {
     const fetchPopularGames = async () => {
       try {
-        const response = await axios.get(`https://api.rawg.io/api/games?ordering=-added&key=${key}&page_size=10`);
-        setPopularGames(response.data.results);
+        const response = await axios.get(`https://api.rawg.io/api/games?ordering=-added&key=${key}&page_size=10&expand=publishers`);
+        const sortedGames = response.data.results.sort(
+          (a, b) => b.metacritic - a.metacritic
+        );
+        setPopularGames(sortedGames);
       } catch (error) {
         console.log(error);
       }
