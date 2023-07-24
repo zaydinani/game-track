@@ -1,22 +1,37 @@
 import '../styles/gamePage.scss'
+import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+
+import { useGameData } from '../api/api';
 
 function game() {
+    const { id } = useParams();
+    console.log(id);
+
+    const { gameData, fetchGameData } = useGameData();
+    console.log(gameData);
+    useEffect(() => {
+        const gameId = id; 
+        fetchGameData(gameId);
+      }, [fetchGameData]);
+    
+      if (!gameData) {
+        return <div>Loading...</div>;
+      }
     return (
       <>
         <div className="game-page-container">
             <div className='game-img'>
-                <img src="/Grand_Theft_Auto_V.png" alt="" />
+                <img src={gameData.background_image} alt="" />
             </div>
             <div className='game-info'>
                 <div>
-                    <h1>grand theft auto V</h1>
-                    <h3>17 sep 2013</h3>
+                    <h1>{gameData.name}</h1>
+                    <h3>{gameData.released}</h3>
                     <div className='consoles'>
-                        <p>playstation 4</p>
-                        <p>xbox 360</p>
-                        <p>playstation 3</p>
-                        <p>pc</p>
-                        <p>xbox one</p>
+                        {gameData.platforms.map((gamePlatform) => (
+                            <p key={gamePlatform.platform.id}>{gamePlatform.platform.name}</p>
+                        ))}
                     </div>
                     <div className='actions'>
                         <form action="">
@@ -31,7 +46,7 @@ function game() {
                     </div>
                     <div className='summary'>
                         <h2>summary</h2>
-                        <p className='summary-para'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, magnam rem voluptatibus quaerat alias modi nostrum iste, officiis corrupti molestiae nisi porro quod ipsum. Sit quae ducimus minima cumque ea.</p>
+                        <p className='summary-para'>{gameData.description_raw}</p>
                         <h2>story </h2>
                         <p className='summary-para'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, magnam rem voluptatibus quaerat alias modi nostrum iste, officiis corrupti molestiae nisi porro quod ipsum. Sit quae ducimus minima cumque ea.</p>
                         <div className='dev'>

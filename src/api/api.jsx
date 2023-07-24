@@ -8,6 +8,8 @@ export function useGameData() {
   const [latestGames, setLatestGames] = useState([]);
   const [comingSoonGames, setComingSoonGames] = useState([]);
   const [topRatedGames, setTopRatedGames] = useState([]);
+  const [gameData, setGameData] = useState(null);
+
   //! fetch popular games 
   useEffect(() => {
     const fetchPopularGames = async () => {
@@ -57,5 +59,26 @@ export function useGameData() {
     fetchComingSoonGames();
     fetchTopRatedGames();
   }, []);
-  return { popularGames, latestGames, comingSoonGames, topRatedGames };
+  //! search for games 
+  const [searchResults, setSearchResults] = useState([]);
+  const searchGames = async (searchQuery) => {
+    try {
+      const response = await axios.get(`https://api.rawg.io/api/games?search=${searchQuery}&key=${key}`)
+      setSearchResults(response.data.results);
+      console.log(response.data.results)
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  //! fetch one specific game data from ID
+  const fetchGameData = async (gameId) => {
+    try {
+      const response = await axios.get(`https://api.rawg.io/api/games/${gameId}?key=${key}`);
+      setGameData(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  return { popularGames, latestGames, comingSoonGames, topRatedGames, searchGames, searchResults, fetchGameData, gameData};
 }

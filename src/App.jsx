@@ -1,4 +1,5 @@
 
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './styles/app.scss'
 //components
 import Nav from './components/nav'
@@ -15,11 +16,14 @@ import About from './pages/about'
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <Nav />
-      <NewHome />
+      <Routes>
+        <Route path="/" element={<NewHome />} />
+        <Route path="/game/:id" element={<GamePage />} />
+      </Routes>
       <Footer />
-    </>
+    </BrowserRouter>
   )
 }
 

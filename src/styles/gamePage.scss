@@ -4,8 +4,15 @@
     padding: 6rem 5rem;
     @include flex(center, flex-start);
     .game-img{
-        width: 31%;
+        width: 40%;
         margin-right: 2rem;
+        height: 750px;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
 
     }
     .game-info{
@@ -93,7 +100,6 @@
             }
         }
     }
-}
 
 
 
