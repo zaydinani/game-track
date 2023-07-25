@@ -203,7 +203,7 @@
       .game-card__cover > img,
       .game-card__image-placeholder {
           transition-duration: $speed-in;
-          transform: translateY($content-height / 2);
+          transform: translateY calc($content-height / 2);
           transition-delay: 100ms;
       }
   
@@ -214,7 +214,7 @@
       }
   
       .game-card__cover-badge {
-          transition-duration: ($speed-in / 2), ($speed-in / 2);
+          transition-duration: calc($speed-in / 2),  calc($speed-in / 2);
           transition-delay: 100ms, 100ms;
           opacity: 0;
           transform: translateY(100%);
@@ -234,7 +234,7 @@
           opacity: 1;
           transform: scale(1);
           transition-duration: $speed-in;
-          transition-delay: $speed-in / 6;
+          transition-delay: calc($speed-in / 6)
     }
 }
 @media(max-width: 768px) {

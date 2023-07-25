@@ -6,18 +6,15 @@ import { useGameData } from '../api/api';
 
 function game() {
     const { id } = useParams();
-    console.log(id);
-
     const { gameData, fetchGameData } = useGameData();
     console.log(gameData);
     useEffect(() => {
         const gameId = id; 
         fetchGameData(gameId);
-      }, [fetchGameData]);
-    
-      if (!gameData) {
+    }, [fetchGameData]);
+    if (!gameData) {
         return <div>Loading...</div>;
-      }
+    }
     return (
       <>
         <div className="game-page-container">
@@ -32,6 +29,28 @@ function game() {
                         {gameData.platforms.map((gamePlatform) => (
                             <p key={gamePlatform.platform.id}>{gamePlatform.platform.name}</p>
                         ))}
+                    </div>
+                    <div className="game-reviews">
+                        <div className="review">
+                            <h3>beaten</h3>
+                            <p>1000</p>
+                        </div>
+                        <div className="review">
+                            <h3>dropped</h3>
+                            <p>1000</p>
+                        </div>
+                        <div className="review">
+                            <h3>owned</h3>
+                            <p>1000</p>
+                        </div>
+                        <div className="review">
+                            <h3>playing</h3>
+                            <p>1000</p>
+                        </div>
+                        <div className="review">
+                            <h3>to play</h3>
+                            <p>1000</p>
+                        </div>
                     </div>
                     <div className='actions'>
                         <form action="">
