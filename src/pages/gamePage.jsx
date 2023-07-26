@@ -5,16 +5,21 @@ import { useParams } from 'react-router-dom';
 import { useGameData } from '../api/api';
 
 function game() {
+
     const { id } = useParams();
     const { gameData, fetchGameData } = useGameData();
-    console.log(gameData);
+  
     useEffect(() => {
-        const gameId = id; 
+        const gameId = id;
+        
         fetchGameData(gameId);
-    }, [fetchGameData]);
+    }, [id]); 
+    
     if (!gameData) {
-        return <div>Loading...</div>;
+      return <div>Loading...</div>;
     }
+    console.log(gameData);
+
     return (
       <>
         <div className="game-page-container">

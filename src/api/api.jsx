@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const key = 'da1ce367e34a49d8b575c8cc4f91f0f8';
+//main key const key = 'da1ce367e34a49d8b575c8cc4f91f0f8';
+const key = '545d290f931d4e9c8e2c469223c96bd1';
 
 export function useGameData() {
   const [popularGames, setPopularGames] = useState([]);
@@ -65,7 +66,7 @@ export function useGameData() {
     try {
       const response = await axios.get(`https://api.rawg.io/api/games?search=${searchQuery}&key=${key}`)
       setSearchResults(response.data.results);
-      console.log(response.data.results)
+      //console.log(response.data.results)
     } catch (error) {
       console.log(error);
     }

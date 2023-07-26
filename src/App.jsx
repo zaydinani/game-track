@@ -9,9 +9,8 @@ import Playing from './components/collections'
 import Hero from './pages/hero'
 import SignUp from './pages/auth/signUp'
 import SignIn from './pages/auth/signIn'
-import Home from './pages/home'
 import GamePage from './pages/gamePage'
-import NewHome from './pages/newhome'
+import Home from './pages/home'
 import About from './pages/about'
 
 function App() {
@@ -19,7 +18,7 @@ function App() {
     <BrowserRouter>
       <Nav />
       <Routes>
-        <Route path="/" element={<NewHome />} />
+        <Route path="/" element={<Home />} />
         <Route path="/game/:id" element={<GamePage />} />
       </Routes>
       <Footer />

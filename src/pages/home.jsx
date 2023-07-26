@@ -1,111 +1,161 @@
 import React, { useRef, useState, useEffect } from 'react';
-import '../styles/home.scss';
+import { useNavigate } from 'react-router-dom';
 import { useGameData } from '../api/api';
-import GameCard from '../components/gameCard';
-import carouselGameCard from '../components/carouselGameCard';
-
-// Swiper React components
+// Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { FreeMode, Pagination } from 'swiper/modules';
+// Import Swiper styles
 import 'swiper/css';
+import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
-import { Pagination } from 'swiper/modules';
+import '../styles/newhome.scss';
+import CarouselGameCard from '../components/carouselGameCard';
+import GameCard from '../components/gameCard';
 
-function Home() {
-  const { popularGames, latestGames, comingSoonGames, topRatedGames } = useGameData();
-
+function NewHome() {
+  const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState('');
+  const { 
+    popularGames, 
+    latestGames, 
+    comingSoonGames, 
+    topRatedGames, 
+    searchGames, 
+    searchResults
+  } = useGameData();
+  const handleSearchInputChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+    searchGames(searchQuery);
+  };
   useEffect(() => {
     console.log('Popular Games:', popularGames);
     console.log('Latest Games:', latestGames);
-    console.log('coming soon Games:', comingSoonGames);
-    console.log('top rated games:', comingSoonGames);
-
+    console.log('top rated Games:', topRatedGames);
+    console.log('coming soon games:', comingSoonGames);
   }, [popularGames, latestGames, comingSoonGames, topRatedGames]);
   return (
-    <div className='games-container'>
-      <form action='' className='search-bar'>
-        <input type='search' name='search' pattern='.*\S.*' required />
-        <button className='search-btn' type='submit'>
-          <span>Search</span>
-        </button>
+    <div className='games--container'>
+      <form className="search-container" onSubmit={handleSearchSubmit}>
+        <input 
+          type="text" 
+          id="search-bar" 
+          placeholder="search games ?"
+          value={searchQuery}
+          onChange={handleSearchInputChange}
+        />
+        <a href="#"><img className="search-icon" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"/></a>
       </form>
-      <h1>Popular</h1>
-      <Swiper
-        modules={[Pagination]}
-        pagination={{
-          clickable: true,
-        }}
-        className='mySwiper'
-        breakpoints={{
-          0: {
-            slidesPerView: 2,
-            spaceBetween: 10,
-          },
-          375: {
-            slidesPerView: 1,
-            spaceBetween: 10,
-          },
-          425: {
-            slidesPerView: 2,
-            spaceBetween: 20,
-          },
-          768: {
-            slidesPerView: 3,
-            spaceBetween: 20,
-          },
-          1024: {
-            slidesPerView: 4,
-            spaceBetween: 30,
-          },
-          1440: {
-            slidesPerView: 5,
-            spaceBetween: 30,
-          },
-        }}
-      >
-        {popularGames.map((game) => (
-          <SwiperSlide className='SwiperSlide' key={game.id}>
-            <GameCard title={game.name} imageUrl={game.background_image} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
-        <div className='latest-games'>
-            <h1>latest</h1>
-            <div className='game'>
-              {latestGames.map((game) => (
-                <GameCard
-                  key={game.id}
+        {/* Conditional rendering of search results */}
+        {searchResults.length > 0 && (
+        <>
+          <h1 className="line-title">Search Results</h1>
+          <div className="game-cards">
+            {searchResults.map((game) => (
+              <GameCard 
+                key={game.id}
+                id={game.id}
+                title={game.name}
+                imageUrl={game.background_image}
+                rating={game.metacritic}
+                onClick={() => navigate(`/game/${game.id}`)}
+              />
+            ))}
+          </div>
+        </>
+      )}
+      {!searchResults.length > 0 && (
+        <>
+          <h1 className="line-title">popular games</h1>
+          <Swiper
+            slidesPerView={3}
+            spaceBetween={15}
+            freeMode={true}
+            pagination={{
+              clickable: true,
+            }}
+            modules={[FreeMode, Pagination]}
+            className="mySwiper"
+            breakpoints={{
+              0: {
+                slidesPerView: 1,
+                spaceBetween: 10,
+              },
+              375: {
+                slidesPerView: 1,
+                spaceBetween: 10,
+              },
+              425: {
+                slidesPerView: 2,
+                spaceBetween: 10,
+              },
+              768: {
+                slidesPerView: 3,
+                spaceBetween: 10,
+              },
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 10,
+              },
+              1440: {
+                slidesPerView: 3,
+                spaceBetween: 20,
+              },
+            }}
+          >
+            {popularGames.map((game) => (
+              <SwiperSlide key={game.id} >
+                <CarouselGameCard 
+                  id={game.id}
                   title={game.name}
                   imageUrl={game.background_image}
+                  publisher={game.publishers}
+                  rating={game.metacritic}
                 />
-              ))}
-            </div>
-        </div>
-        <div className='latest-games'>
-          <h1>anticipated</h1>
-          <div className='game'>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          <h1 className="line-title">latest games</h1>
+          <div className="game-cards">
+            {latestGames.map((game) => (
+              <GameCard 
+                key={game.id}
+                id={game.id}
+                title={game.name}
+                imageUrl={game.background_image}
+                rating={game.metacritic}
+              />
+            ))}
+          </div>
+          <h1 className="line-title">anticipated games</h1>
+          <div className="game-cards">
             {comingSoonGames.map((game) => (
-              <GameCard
+              <GameCard 
                 key={game.id}
+                id={game.id}
                 title={game.name}
-                imageUrl={game.background_image}                
+                imageUrl={game.background_image}
+                rating={game.released}
               />
             ))}
           </div>
-        </div>
-        <div className='latest-games'>
-          <h1>top rated</h1>
-          <div className='game'>
+          <h1 className="line-title">top rated games</h1>
+          <div className="game-cards">
             {topRatedGames.map((game) => (
-              <GameCard
+              <GameCard 
                 key={game.id}
+                id={game.id}
                 title={game.name}
-                imageUrl={game.background_image}               
+                imageUrl={game.background_image}
+                rating={game.metacritic}
               />
             ))}
           </div>
-        </div>
+        </>
+      )}
     </div>
   );
 }
-
-export default Home;
+export default NewHome;
