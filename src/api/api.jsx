@@ -71,11 +71,20 @@ export function useGameData() {
       console.log(error);
     }
   };
+
   //! fetch one specific game data from ID
   const fetchGameData = async (gameId) => {
     try {
       const response = await axios.get(`https://api.rawg.io/api/games/${gameId}?key=${key}`);
-      setGameData(response.data);
+      const gameData = response.data;
+
+      // Fetch screenshots for the specific game
+      const screenshotsResponse = await axios.get(`https://api.rawg.io/api/games/${gameId}/screenshots?key=${key}`);
+      const screenshots = screenshotsResponse.data.results;
+
+      // Add the screenshots data to the gameData object
+      gameData.screenshots = screenshots;
+      setGameData(gameData);
     } catch (error) {
       console.log(error);
     }

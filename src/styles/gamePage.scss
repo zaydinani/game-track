@@ -1,12 +1,12 @@
 @import '_variables';
 
 .game-page-container{
-    padding: 6rem 5rem;
+    padding: 4.5rem 5rem;
     @include flex(center, flex-start);
     .game-img{
         width: 40%;
         margin-right: 2rem;
-        height: 750px;
+        height: 85vh;
             img {
                 width: 100%;
                 height: 100%;
@@ -32,6 +32,7 @@
                 display: flex;
                 gap: 0.5rem;
                 margin: 1rem 0;
+                flex-wrap: wrap;
                 p{
                     padding: 0.2rem 0.5rem;
                     border-radius: 10px;
@@ -48,7 +49,7 @@
                 .review{
                     border: 1px solid $accents;
                     text-align: center;
-                    max-width: 18%;
+                    max-width: 23.5%;
                     height: 90%;
                     display: flex;
                     flex-direction: column;
@@ -59,10 +60,29 @@
                         letter-spacing: .1rem;
                         font-weight: 600;
                     }
-                    &:hover{
-                        scale: 1.1;
-                        border-radius: 15px;
-                        background-color: #795f913a;
+                }
+            }
+            .critic-reviews{
+                height: 5rem;
+                @include flex(space-between, flex-start);
+                .critic-review{
+                    border: 1px solid $accents;
+                    border-radius: 5px;
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: center;
+                    width: 49%;
+                    height: 100%;
+                    padding: 0.5rem;
+                    div{
+                        width: 73%;
+                        h3{
+                            font-size: 18px;
+                        }
+                    }
+                    img{
+                        height: 2rem;
+                        width: 2rem;
                     }
                 }
             }
@@ -111,20 +131,16 @@
                 }
             }
             .screenshots{
-                @include flex(space-between, center);
                 border-radius: 10px;
-                flex-wrap: wrap;
-                gap: 1rem;
                 margin-top: 1rem;
                 background-color: #795f913a;
-                padding: 1rem;
-                div{
-                    width: 10rem;
+                .mySwiper{
+                    border-radius: 10px;
                     img{
-    
-                        border-radius: 10px;
+                        padding: 1rem;                        
                     }
                 }
+
             }
         }
     }
@@ -133,17 +149,17 @@
 
 @media(max-width: 768px) {
     .game-page-container{
-        padding: 6rem 0rem;
+        padding: 4rem  1.4rem;
         @include flex(center, flex-start);
     }
 }
 @media(max-width: 425px) {
     .game-page-container{
         @include flex(center, center);
-        padding: 5rem 0rem;
+        padding: 4rem 0rem;
         flex-direction: column;
         .game-img{
-            height: 70vh;
+            height: 75vh;
             width: 90%;
             margin: 0 0 1rem 0;
         }
@@ -187,20 +203,12 @@
                     }
                 }
             }
-        }
-    }
-}
-@media(max-width: 375px) {
-    .game-page-container{
-        .game-info{
-            div{
-                .screenshots{
-                    gap: 1rem;
+            .critic-reviews{
+                .critic-review{
                     div{
-                        margin: 0 auto;
-                        width: 90%;
-                        img{
-                            border-radius: 10px;
+                        width: 73%;
+                        h3{
+                            font-size: 16px;
                         }
                     }
                 }
@@ -208,6 +216,7 @@
         }
     }
 }
+
 @media(max-width: 320px) {
     .game-page-container{
         .game-info{
