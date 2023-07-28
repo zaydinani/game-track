@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+
 import '../styles/hero.scss';
 
 function Hero() {
@@ -17,10 +19,7 @@ function Hero() {
         <div className="showcase-content">
           <h1>welcome</h1>
           <p>keep track of your favorite games and characters</p>
-          <a href="#" className="btn btn-xl">
-            sign up now
-            <i className="fas fa-chevron-right btn-icon"></i>
-          </a>
+            <Link className="btn btn-xl" to="/home">try it out</Link>
         </div>
       </div>
 
@@ -56,9 +55,8 @@ function Hero() {
                 <p className="text-lg">
                   you can add your own games and create a list of games in an elegant design
                 </p>
-                <a href="#" className="btn btn-lg">
-                  sign up now
-                </a>
+                <Link className="btn btn-lg" to="/home">check it out</Link>
+
               </div>
               <img src="/game.png" alt="" />
             </div>
@@ -70,9 +68,7 @@ function Hero() {
           >
             <div className="tab-2-content-top">
               <p className="text-lg">add and keep track of all your favorite characters</p>
-              <a href="#" className="btn btn-lg">
-                sign up now
-              </a>
+              <Link className="btn btn-lg" to="/home">check it out</Link>
             </div>
             <div className="tab-2-content-bottom">
               <div>

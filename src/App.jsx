@@ -4,7 +4,7 @@ import './styles/app.scss'
 //components
 import Nav from './components/nav'
 import Footer from './components/footer'
-import Playing from './components/collections'
+import Collection from './components/collections'
 //pages 
 import Hero from './pages/hero'
 import SignUp from './pages/auth/signUp'
@@ -18,8 +18,14 @@ function App() {
     <BrowserRouter>
       <Nav />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Hero />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/about" element={<About />} />
         <Route path="/game/:id" element={<GamePage />} />
+        <Route path="/playing" element={<Collection />} />
+        <Route path="/want" element={<Collection />} />
+        <Route path="/owned" element={<Collection />} />
+        <Route path="/finished" element={<Collection />} />
       </Routes>
       <Footer />
     </BrowserRouter>

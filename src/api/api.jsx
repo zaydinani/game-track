@@ -66,7 +66,7 @@ export function useGameData() {
     try {
       const response = await axios.get(`https://api.rawg.io/api/games?search=${searchQuery}&key=${key}`)
       setSearchResults(response.data.results);
-      //console.log(response.data.results)
+      console.log(response.data.results)
     } catch (error) {
       console.log(error);
     }
@@ -90,5 +90,15 @@ export function useGameData() {
     }
   };
 
-  return { popularGames, latestGames, comingSoonGames, topRatedGames, searchGames, searchResults, fetchGameData, gameData};
+  return { 
+    popularGames, 
+    latestGames, 
+    comingSoonGames, 
+    topRatedGames, 
+    searchGames, 
+    searchResults,
+    setSearchResults, 
+    fetchGameData, 
+    gameData
+  };
 }

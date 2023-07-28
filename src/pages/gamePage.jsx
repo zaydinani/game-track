@@ -87,6 +87,9 @@ function Game() {
                             <button>+ finished</button>
                         </form>
                         <form action="">
+                            <button>+ want</button>
+                        </form>
+                        <form action="">
                             <button>+ owned</button>
                         </form>
                     </div>

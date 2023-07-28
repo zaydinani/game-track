@@ -21,15 +21,26 @@ function NewHome() {
     comingSoonGames, 
     topRatedGames, 
     searchGames, 
-    searchResults
+    searchResults,
+    setSearchResults
   } = useGameData();
   const handleSearchInputChange = (event) => {
     setSearchQuery(event.target.value);
   };
   const handleSearchSubmit = (event) => {
     event.preventDefault();
-    searchGames(searchQuery);
+    if (searchQuery.trim() !== '') {
+      searchGames(searchQuery);
+    } else {
+      setSearchResults([]);
+    }
   };
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      handleSearchSubmit(event);
+    }
+  };
+  
   useEffect(() => {
     console.log('Popular Games:', popularGames);
     console.log('Latest Games:', latestGames);
@@ -39,13 +50,14 @@ function NewHome() {
   return (
     <div className='games--container'>
       <form className="search-container" onSubmit={handleSearchSubmit}>
-        <input 
-          type="text" 
-          id="search-bar" 
-          placeholder="search games ?"
-          value={searchQuery}
-          onChange={handleSearchInputChange}
-        />
+      <input 
+        type="text" 
+        id="search-bar" 
+        placeholder="search games ?"
+        value={searchQuery}
+        onChange={handleSearchInputChange}
+        onKeyDown={handleKeyDown}
+      />
         <a href="#"><img className="search-icon" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"/></a>
       </form>
         {/* Conditional rendering of search results */}
@@ -66,7 +78,7 @@ function NewHome() {
           </div>
         </>
       )}
-      {!searchResults.length > 0 && (
+      {searchResults.length === 0 && (
         <>
           <h1 className="line-title">popular games</h1>
           <Swiper
