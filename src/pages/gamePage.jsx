@@ -13,22 +13,166 @@ import 'swiper/css/pagination';
 import { Pagination } from 'swiper/modules';
 
 function Game() {
+    // Extract the "id" parameter from the URL using the "useParams" hook
     const { id } = useParams();
+
+    // Get the game data and a function to fetch the game data using the "useGameData" hook
     const { gameData, fetchGameData } = useGameData();
-  
+
+    // Define state variables for the collections of games
+    const [playingGames, setPlayingGames] = useState([]);
+    const [finishedGames, setFinishedGames] = useState([]);
+    const [wantGames, setWantGames] = useState([]);
+    const [ownedGames, setOwnedGames] = useState([]);
+    // clear the collections of games
+    const [clearCollections, setClearCollections] = useState(false);
+
+    // Create references to the collections of games using the "useRef" hook
+    const playingGamesRef = useRef([]);
+    const finishedGamesRef = useRef([]);
+    const wantGamesRef = useRef([]);
+    const ownedGamesRef = useRef([]);
+
+    // Fetch the collections of games from local storage and the game data from the API using the "useEffect" hook
     useEffect(() => {
         const gameId = id;
-        
-        fetchGameData(gameId);
-        console.log('Fetched game');
 
-    }, [id]); 
+        // Retrieve the collections of games from local storage
+        const savedPlayingGames = JSON.parse(localStorage.getItem('playingGames'));
+        const savedFinishedGames = JSON.parse(localStorage.getItem('finishedGames'));
+        const savedWantGames = JSON.parse(localStorage.getItem('wantGames'));
+        const savedOwnedGames = JSON.parse(localStorage.getItem('ownedGames'));
+
+        // Update the state variables and the references with the retrieved collections of games
+        setPlayingGames(savedPlayingGames || []);
+        setFinishedGames(savedFinishedGames || []);
+        setWantGames(savedWantGames || []);
+        setOwnedGames(savedOwnedGames || []);
+
+        playingGamesRef.current = savedPlayingGames || [];
+        finishedGamesRef.current = savedFinishedGames || [];
+        wantGamesRef.current = savedWantGames || [];
+        ownedGamesRef.current = savedOwnedGames || [];
+
+        // Fetch the game data from the API
+        fetchGameData(gameId);
+    }, [id]);
+
+    // clearing all games from collections
+    useEffect(() => {
+        if (clearCollections) {
+          playingGamesRef.current = [];
+          finishedGamesRef.current = [];
+          wantGamesRef.current = [];
+          ownedGamesRef.current = [];
     
+          setPlayingGames([]);
+          setFinishedGames([]);
+          setWantGames([]);
+          setOwnedGames([]);
+    
+          localStorage.removeItem('playingGames');
+          localStorage.removeItem('finishedGames');
+          localStorage.removeItem('wantGames');
+          localStorage.removeItem('ownedGames');
+    
+          setClearCollections(false);
+        }
+    }, [clearCollections]);
+    
+    /*
+    // Save the collections of games to local storage before the page is unloaded using the "useEffect" hook
+    const extractGameData = (game) => ({
+        id: game.id,
+        name: game.name,
+        backgroundImage: game.background_image,
+        rating: game.rating
+    });
+    */
+    // Save the collections of games to local storage whenever they change using the "useEffect" hook
+    useEffect(() => {
+        localStorage.setItem('playingGames', JSON.stringify(playingGamesRef.current));
+        localStorage.setItem('finishedGames', JSON.stringify(finishedGamesRef.current));
+        localStorage.setItem('wantGames', JSON.stringify(wantGamesRef.current));
+        localStorage.setItem('ownedGames', JSON.stringify(ownedGamesRef.current));
+    
+        console.log('playingGames', playingGamesRef.current);
+        console.log('finishedGames', finishedGamesRef.current);
+        console.log('wantGames', wantGamesRef.current);
+        console.log('ownedGames', ownedGamesRef.current);
+    }, [playingGamesRef.current, finishedGamesRef.current, wantGamesRef.current, ownedGamesRef.current]);
+    
+    // Update the appropriate collection of games when a user clicks one of the "Add to" buttons
+    const handleAddGame = (game, collection) => {
+        const gameIndex = collection.findIndex(item => item.id === game.id);
+      
+        if (gameIndex !== -1) {
+            // Game is already in the collection, remove it
+            const updatedCollection = [...collection];
+            updatedCollection.splice(gameIndex, 1);
+      
+            switch (collection) {
+                case playingGamesRef.current:
+                    playingGamesRef.current = updatedCollection;
+                    setPlayingGames(updatedCollection);
+                break;
+                case finishedGamesRef.current:
+                    finishedGamesRef.current = updatedCollection;
+                    setFinishedGames(updatedCollection);
+                break;
+                case wantGamesRef.current:
+                    wantGamesRef.current = updatedCollection;
+                    setWantGames(updatedCollection);
+                break;
+                case ownedGamesRef.current:
+                    ownedGamesRef.current = updatedCollection;
+                    setOwnedGames(updatedCollection);
+                break;
+                default:
+                break;
+            }
+        } else {
+            // Game is not in the collection, add it
+            const updatedCollection = [...collection, game];
+      
+            switch (collection) {
+                case playingGamesRef.current:
+                    playingGamesRef.current = updatedCollection;
+                    setPlayingGames(updatedCollection);
+                break;
+                case finishedGamesRef.current:
+                    finishedGamesRef.current = updatedCollection;
+                    setFinishedGames(updatedCollection);
+                break;
+                case wantGamesRef.current:
+                    wantGamesRef.current = updatedCollection;
+                    setWantGames(updatedCollection);
+                break;
+                case ownedGamesRef.current:
+                    ownedGamesRef.current = updatedCollection;
+                    setOwnedGames(updatedCollection);
+                break;
+                default:
+                break;
+            }
+        }
+    };
+    // handle clear collections
+    const handleClearCollections = () => {
+        setClearCollections(true);
+        console.log('collections cleared successfully');
+      };
+    //!--------------------------------------
+    useEffect(() => {
+        const gameId = id;   
+        fetchGameData(gameId);
+        //console.log('Fetched game');
+    }, [id]); 
     if (!gameData) {
         return <div>Loading...</div>;
     }
-    
-    console.log(gameData);
+    //console.log(gameData);
+    //-----------------------------------------------------
 
     return (
       <>
@@ -79,19 +223,20 @@ function Game() {
                             </div>
                         </div>
                     </div>
-                    <div className='actions'>
-                        <form action="">
-                            <button>+ playing</button>
-                        </form>
-                        <form action="">
-                            <button>+ finished</button>
-                        </form>
-                        <form action="">
-                            <button>+ want</button>
-                        </form>
-                        <form action="">
-                            <button>+ owned</button>
-                        </form>
+                    <div className="actions">
+                        <button onClick={() => handleAddGame(gameData, playingGamesRef.current)}>
+                            {playingGamesRef.current.some(item => item.id === gameData.id) ? 'Remove from Playing' : 'Add to Playing'}
+                        </button>
+                        <button onClick={() => handleAddGame(gameData, finishedGamesRef.current)}>
+                            {finishedGamesRef.current.some(item => item.id === gameData.id) ? 'Remove from Finished' : 'Add to Finished'}
+                        </button>
+                        <button onClick={() => handleAddGame(gameData, wantGamesRef.current)}>
+                            {wantGamesRef.current.some(item => item.id === gameData.id) ? 'Remove from Want' : 'Add to Want'}
+                        </button>
+                        <button onClick={() => handleAddGame(gameData, ownedGamesRef.current)}>
+                            {ownedGamesRef.current.some(item => item.id === gameData.id) ? 'Remove from Owned' : 'Add to Owned'}
+                        </button>
+                        <button onClick={handleClearCollections}>Clear Collections</button>
                     </div>
                     <div className='summary'>
                         <h2>summary</h2>

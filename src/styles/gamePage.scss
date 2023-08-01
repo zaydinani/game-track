@@ -90,8 +90,6 @@
                 display: flex;
                 gap: 1rem;
                 margin: 1rem 0;
-
-                form{
                     button{
                         border-radius: 25px;
                         padding: .4rem .7rem;
@@ -106,7 +104,6 @@
                         background-color: $accents;
                         color: black;
                     }
-                }
             }
             .summary{
                 h2{

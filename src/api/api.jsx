@@ -5,11 +5,11 @@ import axios from 'axios';
 const key = '545d290f931d4e9c8e2c469223c96bd1';
 
 export function useGameData() {
+  const [gameData, setGameData] = useState(null);
   const [popularGames, setPopularGames] = useState([]);
   const [latestGames, setLatestGames] = useState([]);
   const [comingSoonGames, setComingSoonGames] = useState([]);
   const [topRatedGames, setTopRatedGames] = useState([]);
-  const [gameData, setGameData] = useState(null);
 
   //! fetch popular games 
   useEffect(() => {
