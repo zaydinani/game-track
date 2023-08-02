@@ -1,26 +1,26 @@
 import '../styles/footer.scss'
+import { Link } from 'react-router-dom';
+
 function Footer() {
     return (
         <footer>
             <div className="footer-content">
-                <h3>Foolish Developer</h3>
-                <p>Raj Template is a blog website where you will find great tutorials on web design and development. Here each tutorial is beautifully described step by step with the required source code.</p>
+                <h3>game track</h3>
+                <p>This website has been skillfully crafted by Zayd Inani to serve as a showcase in my portfolio. The impressive collection of games and their data is sourced through the integration of the RAWG API, bringing you a comprehensive and immersive gaming experience.</p>
                 <ul className="socials">
                     <li><a href="#"><i className="fa fa-facebook"></i></a></li>
                     <li><a href="#"><i className="fa fa-twitter"></i></a></li>
-                    <li><a href="#"><i className="fa fa-google-plus"></i></a></li>
-                    <li><a href="#"><i className="fa fa-youtube"></i></a></li>
+                    <li><a href="#"><i className="fa fa-linkedin-square"></i></a></li>
                     <li><a href="#"><i className="fa fa-linkedin-square"></i></a></li>
                 </ul>
             </div>
             <div className="footer-bottom">
-                <p>copyright &copy; <a href="#">Foolish Developer</a>  </p>
+                <p>copyright &copy; <a href="#">zayd inani</a>  </p>
                 <div className="footer-menu">
                     <ul className="f-menu">
-                        <li><a href="">Home</a></li>
-                        <li><a href="">About</a></li>
-                        <li><a href="">Contact</a></li>
-                        <li><a href="">Blog</a></li>
+                    <li className="sign-in hero"><Link to="/">hero</Link></li>
+                    <li className="sign-in"><Link to="/home">home</Link></li>
+                    <li className="sign-in"><Link to="/about">about</Link></li>
                     </ul>
                 </div>
             </div>

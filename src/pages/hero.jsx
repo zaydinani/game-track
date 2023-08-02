@@ -53,7 +53,7 @@ function Hero() {
             <div className="tab-1-content-inner">
               <div>
                 <p className="text-lg">
-                  you can add your own games and create a list of games in an elegant design
+                  Explore an extensive collection of over 500,000 games across 50 platforms, including mobile, by utilizing our powerful search and browsing tools. Uncover detailed information, captivating screenshots, and system requirements for each game, enabling you to make well-informed choices and dive into your gaming adventures with confidence.
                 </p>
                 <Link className="btn btn-lg" to="/home">check it out</Link>
 
@@ -67,18 +67,12 @@ function Hero() {
             className={`tab-content-item ${activeTab === 'tab-2' ? 'show' : ''}`}
           >
             <div className="tab-2-content-top">
-              <p className="text-lg">add and keep track of all your favorite characters</p>
-              <Link className="btn btn-lg" to="/home">check it out</Link>
+              <p className="text-lg">"You can effortlessly categorize your games into distinct collections, such as owned, playing, finished, and want to keep, ensuring impeccable organization for your gaming library. Enjoy the ease of managing and accessing your games, all neatly arranged according to your preferences and play status."</p>
+              <img src="/chrome_qezmqrvs5O.png" alt="" />
             </div>
             <div className="tab-2-content-bottom">
               <div>
-                <img src="/character.png" alt="" />
-              </div>
-              <div>
-                <img src="/character.png" alt="" />
-              </div>
-              <div>
-                <img src="/character.png" alt="" />
+                <Link className="btn btn-lg" to="/home">check it out</Link>
               </div>
             </div>
           </div>

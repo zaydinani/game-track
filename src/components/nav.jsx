@@ -16,15 +16,15 @@ function Nav() {
         <div className="bar"></div>
       </button>
       <nav className={`mobile-nav ${isMenuActive ? 'is-active' : ''}`} id="mobile-nav">
-      <ul>
-        <li><Link to="/">hero</Link></li>
-        <li><Link to="/home">home</Link></li>
-        <li><Link to="/playing">playing</Link></li>
-        <li><Link to="/want">want</Link></li>
-        <li><Link to="/owned">owned</Link></li>
-        <li><Link to="/finished">finished</Link></li>
-        <li><Link to="/about">about</Link></li>
-      </ul>
+        <ul>
+          <li><Link to="/">hero</Link></li>
+          <li><Link to="/home">home</Link></li>
+          <li><Link to="/playing">playing</Link></li>
+          <li><Link to="/want">want</Link></li>
+          <li><Link to="/owned">owned</Link></li>
+          <li><Link to="/finished">finished</Link></li>
+          <li><Link to="/about">about</Link></li>
+        </ul>
       </nav>
       <div>
         <img src="/logo.png" alt="" />

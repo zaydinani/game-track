@@ -90,20 +90,21 @@
                 display: flex;
                 gap: 1rem;
                 margin: 1rem 0;
-                    button{
-                        border-radius: 25px;
-                        padding: .4rem .7rem;
-                        cursor: pointer;
-                        background-color: $secondary;
-                        border: none;
-                        outline: none;
-                        color: $main-light;
-                        transition: 0.5s ease-in-out;
-                    }
-                    button:hover{
-                        background-color: $accents;
-                        color: black;
-                    }
+                flex-wrap: wrap;
+                button{
+                    border-radius: 25px;
+                    padding: .4rem .7rem;
+                    cursor: pointer;
+                    background-color: $secondary;
+                    border: none;
+                    outline: none;
+                    color: $main-light;
+                    transition: 0.5s ease-in-out;
+                }
+                button:hover{
+                    background-color: $accents;
+                    color: black;
+                }
             }
             .summary{
                 h2{
