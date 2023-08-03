@@ -8,7 +8,7 @@ import { FreeMode, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
-import '../styles/newhome.scss';
+import '../styles/home.scss';
 import CarouselGameCard from '../components/carouselGameCard';
 import GameCard from '../components/gameCard';
 

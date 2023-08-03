@@ -1,6 +1,6 @@
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import './styles/app.scss'
+import './styles/App.scss'
 //components
 import Nav from './components/nav'
 import Footer from './components/footer'
@@ -12,6 +12,7 @@ import SignIn from './pages/auth/signIn'
 import GamePage from './pages/gamePage'
 import Home from './pages/home'
 import About from './pages/about'
+
 
 function App() {
   return (

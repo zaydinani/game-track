@@ -1,7 +1,7 @@
 @import '_variables';
 
 .collection-container{
-    padding: 5rem 4rem;
+    padding: 6rem 4rem;
     @include flex(center, center);
     flex-direction: column;
     h1{

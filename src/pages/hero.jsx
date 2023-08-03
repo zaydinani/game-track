@@ -67,7 +67,7 @@ function Hero() {
             className={`tab-content-item ${activeTab === 'tab-2' ? 'show' : ''}`}
           >
             <div className="tab-2-content-top">
-              <p className="text-lg">"You can effortlessly categorize your games into distinct collections, such as owned, playing, finished, and want to keep, ensuring impeccable organization for your gaming library. Enjoy the ease of managing and accessing your games, all neatly arranged according to your preferences and play status."</p>
+              <p className="text-lg">You can effortlessly categorize your games into distinct collections, such as owned, playing, finished, and want to keep, ensuring impeccable organization for your gaming library. Enjoy the ease of managing and accessing your games, all neatly arranged according to your preferences and play status.</p>
               <img src="/chrome_qezmqrvs5O.png" alt="" />
             </div>
             <div className="tab-2-content-bottom">
