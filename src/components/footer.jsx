@@ -6,7 +6,7 @@ function Footer() {
         <footer>
             <div className="footer-content">
                 <h3>game track</h3>
-                <p>This website has been skillfully crafted by Zayd Inani to serve as a showcase in my portfolio. The impressive collection of games and their data is sourced through the integration of the RAWG API, bringing you a comprehensive and immersive gaming experience.</p>
+                <p>This website has been skillfully crafted by Zayd Inani to serve as a showcase in my portfolio. The impressive collection of games and their data is sourced through the integration of the RAWG API, bringing you a comprehensive and immersive experience.</p>
                 <ul className="socials">
                     <li><a href="#"><i className="fa fa-facebook"></i></a></li>
                     <li><a href="#"><i className="fa fa-twitter"></i></a></li>

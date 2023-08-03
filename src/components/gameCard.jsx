@@ -23,9 +23,15 @@ function GameCard(props) {
       </div>
       <div className="game-card__back">
         <div className="game-card__content">
-          <div className="game-card__metadata">
-            <i className="fa-regular fa-star"> {rating}</i>
-          </div>
+          {rating ? (
+            <div className="game-card__metadata">
+              <i className="fa-regular fa-star"> {rating}</i>
+            </div>
+          ) : (
+            <div className="game-card__metadata">
+              <p>release : {props.release_date}</p> 
+            </div>
+          )}
           <div className="game-card__buttons">
             <button className="game-card__button -update" onClick={() => handleGameClick(id)}>
               check it

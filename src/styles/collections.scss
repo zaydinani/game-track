@@ -10,7 +10,7 @@
     .card-container{
         @include flex(center, center);
         flex-wrap: wrap;
-        gap: 0.4rem;
+        gap: 1rem;
         background-color: #795f913a;
         border-radius: 15px;
         padding: 1.5rem;

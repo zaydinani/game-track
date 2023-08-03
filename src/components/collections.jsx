@@ -44,6 +44,7 @@ function Collection() {
               title={game.name}
               imageUrl={game.background_image}
               rating={game.metacritic}
+              release_date={game.released}
             />
           ))
         ) : (

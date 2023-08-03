@@ -125,6 +125,7 @@ function NewHome() {
                   imageUrl={game.background_image}
                   publisher={game.publishers}
                   rating={game.metacritic}
+                  release_date={game.released}
                 />
               </SwiperSlide>
             ))}
@@ -138,6 +139,7 @@ function NewHome() {
                 title={game.name}
                 imageUrl={game.background_image}
                 rating={game.metacritic}
+                release_date={game.released}
               />
             ))}
           </div>
@@ -149,7 +151,8 @@ function NewHome() {
                 id={game.id}
                 title={game.name}
                 imageUrl={game.background_image}
-                rating={game.released}
+                rating={game.metacritic}
+                release_date={game.released}
               />
             ))}
           </div>
@@ -162,6 +165,7 @@ function NewHome() {
                 title={game.name}
                 imageUrl={game.background_image}
                 rating={game.metacritic}
+                release_date={game.released}
               />
             ))}
           </div>

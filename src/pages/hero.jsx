@@ -38,8 +38,8 @@ function Hero() {
             className={`tab-item ${activeTab === 'tab-2' ? 'tab-border' : ''}`}
             onClick={() => selectItem('tab-2')}
           >
-            <i className="fa-solid fa-people-group fa-3x"></i>
-            <p className="hide-sm">add your favorite characters</p>
+            <i class="fa-solid fa-layer-group fa-3x"></i>
+            <p className="hide-sm">sort in collections</p>
           </div>
         </div>
       </section>
