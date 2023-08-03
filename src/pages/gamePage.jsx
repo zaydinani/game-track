@@ -61,22 +61,22 @@ function Game() {
     // clearing all games from collections
     useEffect(() => {
         if (clearCollections) {
-          playingGamesRef.current = [];
-          finishedGamesRef.current = [];
-          wantGamesRef.current = [];
-          ownedGamesRef.current = [];
-    
-          setPlayingGames([]);
-          setFinishedGames([]);
-          setWantGames([]);
-          setOwnedGames([]);
-    
-          localStorage.removeItem('playingGames');
-          localStorage.removeItem('finishedGames');
-          localStorage.removeItem('wantGames');
-          localStorage.removeItem('ownedGames');
-    
-          setClearCollections(false);
+            playingGamesRef.current = [];
+            finishedGamesRef.current = [];
+            wantGamesRef.current = [];
+            ownedGamesRef.current = [];
+        
+            setPlayingGames([]);
+            setFinishedGames([]);
+            setWantGames([]);
+            setOwnedGames([]);
+        
+            localStorage.removeItem('playingGames');
+            localStorage.removeItem('finishedGames');
+            localStorage.removeItem('wantGames');
+            localStorage.removeItem('ownedGames');
+        
+            setClearCollections(false);
         }
     }, [clearCollections]);
     
