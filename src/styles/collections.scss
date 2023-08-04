@@ -22,14 +22,7 @@
         padding: 6rem 1rem;
     }
 }
-@media(max-width: 375px) {
-    .collection-container{
-        padding: 6rem 1rem;
-        .card-container{
-            padding: 1.5rem .5rem;
-        }
-    }
-}
+
 @media(max-width: 375px) {
     .collection-container{
         padding: 6rem 0.5rem;
