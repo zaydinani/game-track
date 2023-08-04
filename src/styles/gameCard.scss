@@ -7,9 +7,9 @@
     flex-wrap: wrap;
     gap: 1.5rem;
     padding-top: 2rem;
-      width: 90%;
+    width: 90%;
     margin: 0 auto;
-  }
+    }
   
     .game-card {
         position: relative;
@@ -25,41 +25,41 @@
         }
     }
   
-  .game-card__front {
-      position: absolute;
-      inset: 0;
-      z-index: 1; // Place above card back
-      pointer-events: none; // Keep from blocking back clicks
-      overflow: hidden;
-      border-radius: $border-radius $border-radius 0 0;
-  }
+    .game-card__front {
+        position: absolute;
+        inset: 0;
+        z-index: 1; // Place above card back
+        pointer-events: none; // Keep from blocking back clicks
+        overflow: hidden;
+        border-radius: $border-radius $border-radius 0 0;
+    }
   
-  .game-card__header {
-      display: flex;
-      height: 100%;
-      pointer-events: auto; // Re-enable interaction
-      flex-flow: column nowrap;
-      transition: transform $speed-out $card-anim-func;
-  }
+    .game-card__header {
+        display: flex;
+        height: 100%;
+        pointer-events: auto; // Re-enable interaction
+        flex-flow: column nowrap;
+        transition: transform $speed-out $card-anim-func;
+    }
   
-  .game-card__cover {
-      position: relative;
-      aspect-ratio: $ratio;
-      background: #37474f;
-      border-radius: 0 0 $border-radius $border-radius;
-      width: 100%;
-      overflow: hidden;
-  }
+    .game-card__cover {
+        position: relative;
+        aspect-ratio: $ratio;
+        background: #37474f;
+        border-radius: 0 0 $border-radius $border-radius;
+        width: 100%;
+        overflow: hidden;
+    }
+    
+    .game-card__cover > img,
+    .game-card__image-placeholder {
+        aspect-ratio: inherit;
+        object-fit: cover;
+    
+        transition: transform $speed-out $card-anim-func;
+    }
   
-  .game-card__cover > img,
-  .game-card__image-placeholder {
-      aspect-ratio: inherit;
-      object-fit: cover;
-  
-      transition: transform $speed-out $card-anim-func;
-  }
-  
-  .game-card__title {
+    .game-card__title {
       flex: 0 1 auto;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -68,178 +68,170 @@
       font-size: 1.2rem;
       line-height: 1.25;
       transition: padding $speed-out $card-anim-func;
-  }
-  
-  .game-card__touch-target {
-      display: none;
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      padding: 0;
-      border: 0;
-      background: none;
-      cursor: pointer;
-      z-index: 1;
-      // transition: margin $speed-out;
-  
-      // .game-card.expanded &,
-      // .game-card:hover &,
-      // .game-card:focus-within & {
-      // 	transition-duration: $speed-in;
-      // 	margin-top: $content-height;
-      // }
-  
-      // &:focus-visible {
-      // 	outline: 0.25rem solid rgba(#fff, 0.5);
-      // 	outline-offset: -0.25rem;
-      // }
-  
-      // Only show for touch devices
-      @media (hover: none) and (pointer: coarse) {
-          display: block;
-      }
-  }
-  
-  
-  .game-card__back {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      flex-flow: column nowrap;
-      border-radius: $border-radius;
-      margin-bottom: $bottom-gap;
-      background: #1b2436; 
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.15), 0 10px 12px rgba(0, 0, 0, 0.15);
-      transition: margin $speed-out $card-anim-func;
-  }
-  
-  .game-card__content {
-      display: flex;
-      flex-flow: column nowrap;
-      justify-content: flex-end;
-      padding: $content-gutter;
-      height: $content-height;
-      margin-top: auto;
-      opacity: 0.1;
-      transform: scale(0.6);
-      transition: transform $speed-out $card-anim-func,
-      opacity $speed-out $card-anim-func;
-  }
-  
-  .game-card__metadata {
-      font-size: 0.875rem;
-      color: #90a4ae;
-      line-height: 1.5;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-  }
-  
-  .game-card__buttons {
-      display: flex;
-      gap: 0.25rem;
-      margin-top: auto;
-  
-      * + & {
-          padding-top: 0.5rem;
-      }
-  }
-  
-  .game-card__button {
-      appearance: none;
-      flex: 0;
-      border: none;
-      height: 2.5rem;
-      min-width: 2.5rem;
-      line-height: 2.5rem;
-      padding: 0 0.5em;
-      text-align: none;
-      overflow: hidden;
-      background: #253049; //#37474f;
-      color: #fff;
-      border-radius: $border-radius * 0.6;
-      text-align: center;
-      cursor: pointer;
-      transition: background 200ms;
-  
-      &:focus-visible {
-          outline: 0.25rem solid #303e5f; //#455a64;
-          outline-offset: -0.125rem;
-      }
-  
-      &:active,
-      &:hover {
-          background: #303e5f; //#455a64;
-      }
-  
-      &.-download,
-      &.-play,
-      &.-update {
-          flex: 1 1 auto;
-      }
-  
-  
-      &.-update {
-          background: $secondary;
-  
-          &:active,
-          &:hover {
-              background: $accents;
-        color: black;
-          }
-      }
-  }
-  
-  .game-card.expanded,
-  .game-card:hover,
-  .game-card:focus,
-  .game-card:focus-within {
-      .game-card__header {
-          transform: translatey($content-height * -1);
-          transition-duration: $speed-in;
-          transition-delay: 100ms;
-      }
-  
-      .game-card__cover > img,
-      .game-card__image-placeholder {
-          transition-duration: $speed-in;
-          transform: translateY calc($content-height / 2);
-          transition-delay: 100ms;
-      }
-  
-      .game-card__title {
-          transition-duration: $speed-in;
-          padding-inline: $content-gutter;
-          transition-delay: 100ms;
-      }
-  
-      .game-card__cover-badge {
-          transition-duration: calc($speed-in / 2),  calc($speed-in / 2);
-          transition-delay: 100ms, 100ms;
-          opacity: 0;
-          transform: translateY(100%);
-      }
-  
-      .game-card__touch-target {
-          display: none;
-      }
-  
-      .game-card__back {
-          margin-bottom: 0;
-          transition-duration: $speed-in;
-          transition-delay: 100ms;
-      }
-  
-      .game-card__content {
-          opacity: 1;
-          transform: scale(1);
-          transition-duration: $speed-in;
-          transition-delay: calc($speed-in / 6)
     }
+  
+    .game-card__touch-target {
+        display: none;
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        padding: 0;
+        border: 0;
+        background: none;
+        cursor: pointer;
+        z-index: 1;
+        @media (hover: none) and (pointer: coarse) {
+            display: block;
+        }
+    }
+  
+  
+    .game-card__back {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-flow: column nowrap;
+        border-radius: $border-radius;
+        margin-bottom: $bottom-gap;
+        background: #1b2436; 
+        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.15), 0 10px 12px rgba(0, 0, 0, 0.15);
+        transition: margin $speed-out $card-anim-func;
+    }
+    
+    .game-card__content {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: flex-end;
+        padding: $content-gutter;
+        height: $content-height;
+        margin-top: auto;
+        opacity: 0.1;
+        transform: scale(0.6);
+        transition: transform $speed-out $card-anim-func,
+        opacity $speed-out $card-anim-func;
+    }
+  
+    .game-card__metadata {
+        font-size: 0.875rem;
+        color: #90a4ae;
+        line-height: 1.5;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+  
+    .game-card__buttons {
+        display: flex;
+        gap: 0.25rem;
+        margin-top: auto;
+    
+        * + & {
+            padding-top: 0.5rem;
+        }
+    }
+    
+    .game-card__button {
+        appearance: none;
+        flex: 0;
+        border: none;
+        height: 2.5rem;
+        min-width: 2.5rem;
+        line-height: 2.5rem;
+        padding: 0 0.5em;
+        text-align: none;
+        overflow: hidden;
+        background: #253049; //#37474f;
+        color: #fff;
+        border-radius: $border-radius * 0.6;
+        text-align: center;
+        cursor: pointer;
+        transition: background 200ms;
+    
+        &:focus-visible {
+            outline: 0.25rem solid #303e5f; //#455a64;
+            outline-offset: -0.125rem;
+        }
+    
+        &:active,
+        &:hover {
+            background: #303e5f; //#455a64;
+        }
+    
+        &.-download,
+        &.-play,
+        &.-update {
+            flex: 1 1 auto;
+        }
+    
+    
+        &.-update {
+            background: $secondary;
+    
+            &:active,
+            &:hover {
+                background: $accents;
+            color: black;
+            }
+        }
+    }
+    
+    .game-card.expanded,
+    .game-card:hover,
+    .game-card:focus,
+    .game-card:focus-within {
+        .game-card__header {
+            transform: translatey($content-height * -1);
+            transition-duration: $speed-in;
+            transition-delay: 100ms;
+        }
+    
+        .game-card__cover > img,
+        .game-card__image-placeholder {
+            transition-duration: $speed-in;
+            transform: translateY calc($content-height / 2);
+            transition-delay: 100ms;
+        }
+    
+        .game-card__title {
+            transition-duration: $speed-in;
+            padding-inline: $content-gutter;
+            transition-delay: 100ms;
+        }
+    
+        .game-card__cover-badge {
+            transition-duration: calc($speed-in / 2),  calc($speed-in / 2);
+            transition-delay: 100ms, 100ms;
+            opacity: 0;
+            transform: translateY(100%);
+        }
+    
+        .game-card__touch-target {
+            display: none;
+        }
+    
+        .game-card__back {
+            margin-bottom: 0;
+            transition-duration: $speed-in;
+            transition-delay: 100ms;
+        }
+    
+        .game-card__content {
+            opacity: 1;
+            transform: scale(1);
+            transition-duration: $speed-in;
+            transition-delay: calc($speed-in / 6)
+        }
 }
 @media(max-width: 768px) {
     .game-card {
         width: 150px;
+    }
+}
+@media(max-width: 425px) {
+    .game-card {
+        .game-card__title {
+            font-size: 1rem;
+        }
     }
 }
 @media(max-width: 320px) {

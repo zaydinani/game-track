@@ -17,8 +17,24 @@
         width: 100%;
     }
 }
-@media(max-width: 358px) {
+@media(max-width: 425px) {
     .collection-container{
-        padding: 5rem 2rem;
+        padding: 6rem 1rem;
+    }
+}
+@media(max-width: 375px) {
+    .collection-container{
+        padding: 6rem 1rem;
+        .card-container{
+            padding: 1.5rem .5rem;
+        }
+    }
+}
+@media(max-width: 375px) {
+    .collection-container{
+        padding: 6rem 0.5rem;
+        .card-container{
+            padding: 1.5rem 0.2rem;
+        }
     }
 }

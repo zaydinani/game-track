@@ -1,7 +1,7 @@
 @import '_variables';
 
 .game-page-container{
-    padding: 6rem 5rem;
+    padding: 5rem 5rem;
     @include flex(center, flex-start);
     .game-img{
         width: 40%;
@@ -34,8 +34,8 @@
                 margin: 1rem 0;
                 flex-wrap: wrap;
                 p{
-                    padding: 0.2rem 0.5rem;
-                    border-radius: 10px;
+                    padding: 0.3rem 0.6rem;
+                    border-radius: 15px;
                     background-color: $accents;
                     color: black;
                     font-size: 12px;
@@ -93,7 +93,7 @@
                 flex-wrap: wrap;
                 button{
                     border-radius: 25px;
-                    padding: .4rem .7rem;
+                    padding: .5rem .8rem;
                     cursor: pointer;
                     background-color: $secondary;
                     border: none;
@@ -147,14 +147,28 @@
 
 @media(max-width: 768px) {
     .game-page-container{
-        padding: 4rem  1.4rem;
+        padding: 5rem  1.4rem;
         @include flex(center, flex-start);
+        .game-info{
+            div{
+                .critic-reviews{
+                    .critic-review{
+
+                        img{
+                            height: 2rem;
+                            width: 2rem;
+                            margin-right: 1rem;
+                        }
+                    }
+                }
+            }
+        }       
     }
 }
 @media(max-width: 425px) {
     .game-page-container{
         @include flex(center, center);
-        padding: 4rem 0rem;
+        padding: 5rem 0rem;
         flex-direction: column;
         .game-img{
             height: 75vh;
@@ -176,7 +190,7 @@
             div{
                 .consoles{
                     p{
-                        padding: 0.1rem 0.2rem;
+                        padding: 0.3rem 0.7rem;
                         font-size: 12px;
                     }
                 }

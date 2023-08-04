@@ -13,7 +13,7 @@ function CarouselGameCard(props) {
   return (
     <div className="game--card">
       <div className='game--card--img'>
-        <img src={imageUrl} alt="" />
+        <img src={imageUrl} alt="" loading="lazy"/>
       </div>
       <div className="game--card--info">
         <a onClick={() => handleGameClick(id)}>

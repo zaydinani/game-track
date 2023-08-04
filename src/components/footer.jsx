@@ -11,8 +11,10 @@ function Footer() {
                     <li><a href="#"><i className="fa fa-facebook"></i></a></li>
                     <li><a href="#"><i className="fa fa-twitter"></i></a></li>
                     <li><a href="#"><i className="fa fa-linkedin-square"></i></a></li>
-                    <li><a href="#"><i className="fa fa-linkedin-square"></i></a></li>
+                    <li><a href="#"><i className="fa-brands fa-instagram"></i></a></li>
+                    <li><a href="#"><i className="fa-brands fa-square-github"></i></a></li>
                 </ul>
+
             </div>
             <div className="footer-bottom">
                 <p>copyright &copy; <a href="#">zayd inani</a>  </p>

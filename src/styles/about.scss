@@ -1,7 +1,7 @@
 @import '_variables';
 
 .about-container{
-    padding: 5rem 4rem;
+    padding: 6rem 4rem;
     @include flex(center, center);
     height: 100vh;
     flex-direction: row;
@@ -51,9 +51,8 @@
 @media(max-width: 425px) {
     .about-container{
         flex-direction: column;
-        border: 1px solid red;
         height: fit-content;
-        padding: 5rem 2rem;
+        padding: 6rem 2rem;
 
         .about-img{
             width: 80%;
@@ -76,7 +75,7 @@
     .about-container{
         flex-direction: column;
         height: fit-content;
-        padding: 5rem 1rem;
+        padding: 6rem 1rem;
         .about-img{
             width: 90%;
         }

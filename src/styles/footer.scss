@@ -7,7 +7,6 @@ footer{
     right: 0;
     height: auto;
     max-width: 99vw;
-    padding-top: 40px;
     background-color: $main-dark;
     color: #fff;
     .footer-content{
@@ -107,14 +106,21 @@ footer{
 }
 
 @media(max-width: 600px) {
-    .footer-bottom{
-        flex-direction: column;
-        @include flex(center, _);
-        .footer-menu ul{
-            justify-content: center;
-            padding: 0;
+    footer{
+        .footer-content{
+
+            p{
+                padding: 0 1.5rem;
+                
+            }
+        }
+        .footer-bottom{
+            flex-direction: column;
+            @include flex(center, _);
+            .footer-menu ul{
+                justify-content: center;
+                padding: 0;
+            }
         }
     }
 }
-    
-    

@@ -15,7 +15,7 @@ function GameCard(props) {
       <div className="game-card__front">
         <div className="game-card__header">
           <div className="game-card__cover">
-            <img src={imageUrl} alt="" />
+            <img src={imageUrl} alt="" loading="lazy"/>
           </div>
           <div className="game-card__title">{title}</div>
           <button className="game-card__touch-target" aria-label="Expand"></button>

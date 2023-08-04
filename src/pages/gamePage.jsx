@@ -80,15 +80,6 @@ function Game() {
         }
     }, [clearCollections]);
     
-    /*
-    // Save the collections of games to local storage before the page is unloaded using the "useEffect" hook
-    const extractGameData = (game) => ({
-        id: game.id,
-        name: game.name,
-        backgroundImage: game.background_image,
-        rating: game.rating
-    });
-    */
     // Save the collections of games to local storage whenever they change using the "useEffect" hook
     useEffect(() => {
         localStorage.setItem('playingGames', JSON.stringify(playingGamesRef.current));
@@ -105,58 +96,55 @@ function Game() {
     // Update the appropriate collection of games when a user clicks one of the "Add to" buttons
     const handleAddGame = (game, collection) => {
         const gameIndex = collection.findIndex(item => item.id === game.id);
-      
+
         if (gameIndex !== -1) {
             // Game is already in the collection, remove it
-            const updatedCollection = [...collection];
-            updatedCollection.splice(gameIndex, 1);
-      
-            switch (collection) {
-                case playingGamesRef.current:
-                    playingGamesRef.current = updatedCollection;
-                    setPlayingGames(updatedCollection);
-                break;
-                case finishedGamesRef.current:
-                    finishedGamesRef.current = updatedCollection;
-                    setFinishedGames(updatedCollection);
-                break;
-                case wantGamesRef.current:
-                    wantGamesRef.current = updatedCollection;
-                    setWantGames(updatedCollection);
-                break;
-                case ownedGamesRef.current:
-                    ownedGamesRef.current = updatedCollection;
-                    setOwnedGames(updatedCollection);
-                break;
-                default:
-                break;
-            }
+            const updatedCollection = collection.filter(item => item.id !== game.id);
+
+            // Update the state and the reference with the updated collection
+            updateCollection(collection, updatedCollection);
         } else {
             // Game is not in the collection, add it
-            const updatedCollection = [...collection, game];
-      
-            switch (collection) {
-                case playingGamesRef.current:
-                    playingGamesRef.current = updatedCollection;
-                    setPlayingGames(updatedCollection);
-                break;
-                case finishedGamesRef.current:
-                    finishedGamesRef.current = updatedCollection;
-                    setFinishedGames(updatedCollection);
-                break;
-                case wantGamesRef.current:
-                    wantGamesRef.current = updatedCollection;
-                    setWantGames(updatedCollection);
-                break;
-                case ownedGamesRef.current:
-                    ownedGamesRef.current = updatedCollection;
-                    setOwnedGames(updatedCollection);
-                break;
-                default:
-                break;
-            }
+            const selectedAttributes = {
+                id: game.id,
+                name: game.name,
+                background_image: game.background_image,
+                rating: game.rating,
+                metacritic: game.metacritic,
+                released: game.released
+            };
+
+            const updatedCollection = [...collection, selectedAttributes];
+
+            // Update the state and the reference with the updated collection
+            updateCollection(collection, updatedCollection);
         }
     };
+
+    // Helper function to update the state and reference with the updated collection
+    const updateCollection = (oldCollection, newCollection) => {
+        switch (oldCollection) {
+            case playingGamesRef.current:
+                playingGamesRef.current = newCollection;
+                setPlayingGames(newCollection);
+                break;
+            case finishedGamesRef.current:
+                finishedGamesRef.current = newCollection;
+                setFinishedGames(newCollection);
+                break;
+            case wantGamesRef.current:
+                wantGamesRef.current = newCollection;
+                setWantGames(newCollection);
+                break;
+            case ownedGamesRef.current:
+                ownedGamesRef.current = newCollection;
+                setOwnedGames(newCollection);
+                break;
+            default:
+                break;
+        }
+    };
+
     // handle clear collections
     const handleClearCollections = () => {
         setClearCollections(true);
@@ -236,7 +224,9 @@ function Game() {
                         <button onClick={() => handleAddGame(gameData, ownedGamesRef.current)}>
                             {ownedGamesRef.current.some(item => item.id === gameData.id) ? 'Remove from Owned' : 'Add to Owned'}
                         </button>
+                        {/* clear collection button }
                         <button onClick={handleClearCollections}>Clear Collections</button>
+                        {*/}
                     </div>
                     <div className='summary'>
                         <h2>summary</h2>
