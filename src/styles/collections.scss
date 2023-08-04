@@ -19,15 +19,10 @@
 }
 @media(max-width: 425px) {
     .collection-container{
-        padding: 6rem 1rem;
-    }
-}
-
-@media(max-width: 375px) {
-    .collection-container{
         padding: 6rem 0.5rem;
         .card-container{
             padding: 1.5rem 0.2rem;
         }
     }
 }
+
