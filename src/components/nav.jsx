@@ -9,6 +9,9 @@ function Nav() {
   const toggleMenu = () => {
     setIsMenuActive(!isMenuActive);
   };
+  const closeMenu = () => {
+    setIsMenuActive(false);
+  };
 
   return (
     <header>
@@ -17,13 +20,13 @@ function Nav() {
       </button>
       <nav className={`mobile-nav ${isMenuActive ? 'is-active' : ''}`} id="mobile-nav">
         <ul>
-          <li><Link to="/">hero</Link></li>
-          <li><Link to="/home">home</Link></li>
-          <li><Link to="/playing">playing</Link></li>
-          <li><Link to="/want">want</Link></li>
-          <li><Link to="/owned">owned</Link></li>
-          <li><Link to="/finished">finished</Link></li>
-          <li><Link to="/about">about</Link></li>
+          <li><Link to="/" onClick={closeMenu}>hero</Link></li>
+          <li><Link to="/home" onClick={closeMenu}>home</Link></li>
+          <li><Link to="/playing" onClick={closeMenu}>playing</Link></li>
+          <li><Link to="/want" onClick={closeMenu}>want</Link></li>
+          <li><Link to="/owned" onClick={closeMenu}>owned</Link></li>
+          <li><Link to="/finished" onClick={closeMenu}>finished</Link></li>
+          <li><Link to="/about" onClick={closeMenu}>about</Link></li>
         </ul>
       </nav>
       <div>

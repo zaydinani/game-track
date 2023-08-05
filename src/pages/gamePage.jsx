@@ -281,7 +281,7 @@ function Game() {
                             >
                                 {gameData.screenshots.map(screenshot => (
                                     <SwiperSlide key={screenshot.id}>
-                                        <img src={screenshot.image} alt="" />
+                                        <img className='screen' src={screenshot.image} alt="" />
                                     </SwiperSlide>
                                 ))}
                             </Swiper>
