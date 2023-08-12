@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-//main key const key = 'da1ce367e34a49d8b575c8cc4f91f0f8';
-const key = '545d290f931d4e9c8e2c469223c96bd1';
+const key = 'da1ce367e34a49d8b575c8cc4f91f0f8';
 
 export function useGameData() {
   const [gameData, setGameData] = useState(null);
